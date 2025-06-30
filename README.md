@@ -1,2 +1,3 @@
-# pkgproxy
-Get info about Go packages using REST API
+# pkg
+
+Get information about Go packages listed in a go.mod file.
