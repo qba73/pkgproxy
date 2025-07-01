@@ -12,10 +12,10 @@ import (
 	"github.com/qba73/pkgproxy"
 )
 
-func TestRetrievePackageSourceCodeURL(t *testing.T) {
+func TestRetrievePackageRepositoryAddress(t *testing.T) {
 	t.Parallel()
 
-	ts := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		f, err := os.Open("testdata/gopkg-in-tomb-v1.html")
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -30,11 +30,13 @@ func TestRetrievePackageSourceCodeURL(t *testing.T) {
 	defer ts.Close()
 
 	pc := pkgproxy.NewPkgCollector()
+	pc.Collector.AllowedDomains = []string{}
 	pc.BaseURL = ts.URL
 
 	got := pc.Get("gopkg.in/tomb.v1")
 	want := pkgproxy.Package{
-		Address: "gopkg.in/tomb.v1",
+		Name:       "gopkg.in/tomb.v1",
+		Repository: "github.com/go-tomb/tomb",
 	}
 
 	if !cmp.Equal(want, got) {

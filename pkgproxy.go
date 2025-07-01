@@ -5,7 +5,7 @@ import (
 )
 
 type Package struct {
-	Address       string
+	Name          string
 	Repository    string
 	Published     string
 	ValidGoMod    string
@@ -26,6 +26,7 @@ func NewPkgCollector() *PkgCollector {
 	)
 	return &PkgCollector{
 		Collector: c,
+		BaseURL:   "https://pkg.go.dev",
 	}
 }
 
@@ -38,7 +39,7 @@ func (p *PkgCollector) Get(pkgName string) Package {
 	p.Collector.Visit(p.BaseURL + "/" + pkgName)
 
 	return Package{
-		Address:    pkgName,
+		Name:       pkgName,
 		Repository: repo,
 	}
 }
