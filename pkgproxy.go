@@ -136,15 +136,15 @@ func sanitizeDate(date string) string {
 }
 
 func sanitizeVersion(version string) string {
-	chunks := strings.Split(strings.TrimSpace(version), "-")
+	chunks := strings.Split(strings.TrimSpace(version), ":")
 	if len(chunks) < 2 {
 		return "Undetected"
 	}
-	chunks = strings.Split(chunks[0], ":")
-	if len(chunks) < 2 {
-		return "Undetected"
+	v := strings.TrimSpace(chunks[1])
+	if strings.Contains(v, "-...-") {
+		return strings.TrimSpace(strings.Split(v, "-")[0])
 	}
-	return strings.TrimSpace(chunks[1])
+	return v
 }
 
 func sanitizeImports(imports string) string {
