@@ -41,17 +41,17 @@ pkg github.com/bitfield/weaver | jq .
 ```
 ```json
 {
-  "Name": "github.com/bitfield/weaver",
-  "Repository": "github.com/bitfield/weaver",
-  "Version": "v0.3.3",
-  "PublishedDate": "Apr 20, 2025",
-  "License": "MIT",
-  "Imports": "15",
-  "ImportedBy": "0",
-  "ValidGoMod": "Yes",
-  "RedistributableLicense": "Yes",
-  "TaggedVersion": "Yes",
-  "StableVersion": "No"
+  "name": "github.com/bitfield/weaver",
+  "repository": "github.com/bitfield/weaver",
+  "version": "v0.3.3",
+  "publishedDate": "Apr 20, 2025",
+  "license": "MIT",
+  "imports": "15",
+  "importedBy": "0",
+  "validGomod": "Yes",
+  "redistributableLicense": "Yes",
+  "taggedVersion": "Yes",
+  "stableVersion": "No"
 }
 ```
 
@@ -62,16 +62,16 @@ pkg github.com/qba73/meteo | jq .
 ```
 ```json
 {
-  "Name": "github.com/qba73/meteo",
-  "Repository": "github.com/qba73/meteo",
-  "Version": "v0.0.0",
-  "PublishedDate": "Jun 10, 2025",
-  "License": "MIT",
-  "Imports": "14",
-  "ImportedBy": "0",
-  "ValidGoMod": "Yes",
-  "RedistributableLicense": "Yes",
-  "TaggedVersion": "No",
-  "StableVersion": "No"
+  "name": "github.com/qba73/meteo",
+  "repository": "github.com/qba73/meteo",
+  "version": "v0.0.0",
+  "publishedDate": "Jun 10, 2025",
+  "license": "MIT",
+  "imports": "14",
+  "importedBy": "0",
+  "validGomod": "Yes",
+  "redistributableLicense": "Yes",
+  "taggedVersion": "No",
+  "stableVersion": "No"
 }
 ```
