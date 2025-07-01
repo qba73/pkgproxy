@@ -1,3 +1,8 @@
+[![CI](https://github.com/qba73/pkgproxy/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/ci.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/qba73/pkgproxy)](https://goreportcard.com/report/github.com/qba73/pkgproxy)
+
+
+
 # pkgproxy
 
 `pkgproxy` is a proxy and a cli for [pkg.go.dev](https://pkg.go.dev) service. It allows to query package and get info using REST API and a command line.
