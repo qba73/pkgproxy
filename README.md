@@ -2,6 +2,7 @@
 [![CI](https://github.com/qba73/pkgproxy/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/ci.yml)
 [![CVE Scan](https://github.com/qba73/pkgproxy/actions/workflows/cvescan.yml/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/cvescan.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/qba73/pkgproxy)](https://goreportcard.com/report/github.com/qba73/pkgproxy)
+[![CodeQL](https://github.com/qba73/pkgproxy/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/github-code-scanning/codeql)
 
 
 
