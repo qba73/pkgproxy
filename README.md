@@ -55,6 +55,27 @@ pkg github.com/bitfield/weaver | jq .
 }
 ```
 
+- [Open Telemetry Go client](https://pkg.go.dev/go.opentelemetry.io/otel)
+
+```shell
+pkg go.opentelemetry.io/otel | jq .
+```
+```json
+{
+  "name": "go.opentelemetry.io/otel",
+  "repository": "github.com/open-telemetry/opentelemetry-go",
+  "version": "v1.37.0",
+  "publishedDate": "Jun 25, 2025",
+  "license": "Apache-2.0",
+  "imports": "5",
+  "importedBy": "12,010",
+  "validGomod": "Yes",
+  "redistributableLicense": "Yes",
+  "taggedVersion": "Yes",
+  "stableVersion": "Yes"
+}
+```
+
 - [qba73/meteo](https://pkg.go.dev/github.com/qba73/meteo)
 
 ```shell
