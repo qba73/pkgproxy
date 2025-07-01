@@ -26,9 +26,9 @@ Usage: pkg package
 Checks the Go package, and reports basic information.
 ```
 
+### Examples
 
-Getting information about a Go packages
-
+Getting information about Go packages
 
 - [bitfield/weaver](https://pkg.go.dev/github.com/bitfield/weaver)
 
