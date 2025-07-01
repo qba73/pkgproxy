@@ -2,7 +2,10 @@ module github.com/qba73/pkgproxy
 
 go 1.24.4
 
-require github.com/gocolly/colly v1.2.0
+require (
+	github.com/gocolly/colly v1.2.0
+	github.com/google/go-cmp v0.6.0
+)
 
 require (
 	github.com/PuerkitoBio/goquery v1.10.3 // indirect

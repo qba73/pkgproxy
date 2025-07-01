@@ -14,6 +14,7 @@ type Package struct {
 }
 
 type PkgCollector struct {
+	BaseURL   string
 	Collector *colly.Collector
 }
 
@@ -34,7 +35,7 @@ func (p *PkgCollector) Get(pkgName string) Package {
 		repo = e.ChildText("a")
 	})
 
-	p.Collector.Visit("https://pkg.go.dev/" + pkgName)
+	p.Collector.Visit(p.BaseURL + "/" + pkgName)
 
 	return Package{
 		Address:    pkgName,
@@ -43,5 +44,7 @@ func (p *PkgCollector) Get(pkgName string) Package {
 }
 
 func Get(name string) Package {
-	return NewPkgCollector().Get(name)
+	p := NewPkgCollector()
+	p.BaseURL = "https://pkg.go.dev"
+	return p.Get(name)
 }
