@@ -3,6 +3,9 @@
 [![CVE Scan](https://github.com/qba73/pkgproxy/actions/workflows/cvescan.yml/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/cvescan.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/qba73/pkgproxy)](https://goreportcard.com/report/github.com/qba73/pkgproxy)
 [![CodeQL](https://github.com/qba73/pkgproxy/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/github-code-scanning/codeql)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/qba73/pkgproxy)
+![GitHub License](https://img.shields.io/github/license/qba73/pkgproxy)
+
 
 
 
