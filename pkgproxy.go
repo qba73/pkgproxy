@@ -9,17 +9,17 @@ import (
 )
 
 type Package struct {
-	Name                   string
-	Repository             string
-	Version                string
-	PublishedDate          string
-	License                string
-	Imports                string
-	ImportedBy             string
-	ValidGoMod             string
-	RedistributableLicense string
-	TaggedVersion          string
-	StableVersion          string
+	Name                   string `json:"name"`
+	Repository             string `json:"repository"`
+	Version                string `json:"version"`
+	PublishedDate          string `json:"publishedDate"`
+	License                string `json:"license"`
+	Imports                string `json:"imports"`
+	ImportedBy             string `json:"importedBy"`
+	ValidGoMod             string `json:"validGomod"`
+	RedistributableLicense string `json:"redistributableLicense"`
+	TaggedVersion          string `json:"taggedVersion"`
+	StableVersion          string `json:"stableVersion"`
 }
 
 type PkgCollector struct {
