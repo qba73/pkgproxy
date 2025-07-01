@@ -75,12 +75,22 @@ func (p *PkgCollector) Get(pkgName string) Package {
 }
 
 func sanitizeDate(date string) string {
-	return strings.TrimSpace(strings.Split(strings.TrimSpace(date), ":")[1])
+	chunks := strings.Split(strings.TrimSpace(date), ":")
+	if len(chunks) < 2 {
+		return "Undetected"
+	}
+	return strings.TrimSpace(chunks[1])
 }
 
 func sanitizeVersion(version string) string {
 	chunks := strings.Split(strings.TrimSpace(version), "-")
+	if len(chunks) < 2 {
+		return "Undetected"
+	}
 	chunks = strings.Split(chunks[0], ":")
+	if len(chunks) < 2 {
+		return "Undetected"
+	}
 	return strings.TrimSpace(chunks[1])
 }
 
