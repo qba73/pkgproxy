@@ -4,7 +4,7 @@ go 1.24.4
 
 require (
 	github.com/gocolly/colly v1.2.0
-	github.com/google/go-cmp v0.6.0
+	github.com/google/go-cmp v0.7.0
 )
 
 require (
