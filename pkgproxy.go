@@ -1,6 +1,7 @@
 package pkgproxy
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -159,4 +160,13 @@ func Get(name string) Package {
 	p := NewPkgCollector()
 	p.BaseURL = "https://pkg.go.dev"
 	return p.Get(name)
+}
+
+func GetJSON(name string) (string, error) {
+	p := Get(name)
+	data, err := json.Marshal(p)
+	if err != nil {
+		return "", fmt.Errorf("marshaling data: %w", err)
+	}
+	return string(data), nil
 }

@@ -15,17 +15,21 @@ Checks the Go package, and reports basic information.
 `
 
 func main() {
-	os.Exit(run(os.Stdout))
+	os.Exit(run(os.Stdout, os.Stderr))
 }
 
-func run(w io.Writer) int {
+func run(w, ew io.Writer) int {
 	flag.Parse()
 	if len(flag.Args()) == 0 {
 		fmt.Println(usage)
 		return 0
 	}
 	gopackage := flag.Args()[0]
-	info := pkgproxy.Get(gopackage)
-	fmt.Fprintf(w, "%+v\n", info)
+	info, err := pkgproxy.GetJSON(gopackage)
+	if err != nil {
+		fmt.Fprint(ew, err)
+		return 1
+	}
+	fmt.Fprintf(w, "%s\n", info)
 	return 0
 }
