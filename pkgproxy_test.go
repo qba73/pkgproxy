@@ -12,7 +12,7 @@ import (
 	"github.com/qba73/pkgproxy"
 )
 
-func TestRetrievePackageRepositoryAddress(t *testing.T) {
+func TestRetrievePkgInformationOnValidInput(t *testing.T) {
 	t.Parallel()
 
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
