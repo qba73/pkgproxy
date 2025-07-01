@@ -1,3 +1,4 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/qba73/pkgproxy.svg)](https://pkg.go.dev/github.com/qba73/pkgproxy)
 [![CI](https://github.com/qba73/pkgproxy/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/qba73/pkgproxy)](https://goreportcard.com/report/github.com/qba73/pkgproxy)
 
