@@ -30,9 +30,9 @@ Usage: pkg package
 Checks the Go package, and reports basic information.
 ```
 
-### Examples
+## Examples
 
-Getting information about Go packages
+### Getting information about Go packages
 
 - [bitfield/weaver](https://pkg.go.dev/github.com/bitfield/weaver)
 
@@ -95,4 +95,64 @@ pkg github.com/qba73/meteo | jq .
   "taggedVersion": "No",
   "stableVersion": "No"
 }
+```
+
+### Using `pkg` with `scorecard`
+
+Checking OpenSSF score for a Go package.
+
+1. Generate and export `GITHUB_AUTH_TOKEN` env var.
+
+2. Verify `scorecard` is installed:
+
+```shell
+scorecard version
+         __  ____     ____    ___    ____    _____    ____      _      ____    ____
+        / / / ___|   / ___|  / _ \  |  _ \  | ____|  / ___|    / \    |  _ \  |  _ \
+       / /  \___ \  | |     | | | | | |_) | |  _|   | |       / _ \   | |_) | | | | |
+  _   / /    ___) | | |___  | |_| | |  _ <  | |___  | |___   / ___ \  |  _ <  | |_| |
+ (_) /_/    |____/   \____|  \___/  |_| \_\ |_____|  \____| /_/   \_\ |_| \_\ |____/
+./scorecard: OpenSSF Scorecard
+
+GitVersion:    5.2.1
+GitCommit:     ab2f6e92482462fe66246d9e32f642855a691dc1
+GitTreeState:  clean
+BuildDate:     2025-05-30T16:02:02Z
+GoVersion:     go1.24.3
+Compiler:      gc
+Platform:      darwin/arm64
+```
+
+To check the score, we need to pass the Go package URL. But what if we have only the package name? This is where the `pkg` CLI comes in handy. `pkg` queries the `pkg.go.dev` service for information and returns package info in JSON format.
+
+3. Send a query to `pkg.go.dev`:
+```shell
+pkg go.opentelemetry.io/otel | jq -r '.repository'
+```
+response:
+```
+github.com/open-telemetry/opentelemetry-go
+```
+
+---
+
+How to use `pkg` and `scorecard` together?
+
+- [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-go)
+
+```shell
+scorecard --repo $(pkg go.opentelemetry.io/otel | jq -r '.repository' ) --format json | jq .score
+```
+response:
+```shell
+9.6
+```
+
+- [Inspector](https://github.com/qba73/inspector)
+```shell
+scorecard --repo $(pkg github.com/qba73/inspector | jq -r '.repository' ) --format json | jq .score
+```
+response:
+```shell
+6.4
 ```
