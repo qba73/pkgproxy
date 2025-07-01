@@ -1,3 +1,4 @@
+// Package pkgproxy provides functions for getting Go package data from pkg.go.dev.
 package pkgproxy
 
 import (
@@ -8,6 +9,8 @@ import (
 	"github.com/gocolly/colly"
 )
 
+// Package represents information about
+// Go package received from the pkg.go.dev.
 type Package struct {
 	Name                   string `json:"name"`
 	Repository             string `json:"repository"`
@@ -22,11 +25,16 @@ type Package struct {
 	StableVersion          string `json:"stableVersion"`
 }
 
+// PkgCollector represents the web scraper (collector).
 type PkgCollector struct {
 	BaseURL   string
 	Collector *colly.Collector
 }
 
+// NewPkCollector configures and returns defualt
+// PkgCollector ready to interact with pkg.go.dev.
+//
+// The collector creates a default cache dir `.pkg_cache`.
 func NewPkgCollector() *PkgCollector {
 	c := colly.NewCollector(
 		colly.AllowedDomains("pkg.go.dev", "www.pkg.go.dev"),
@@ -39,6 +47,8 @@ func NewPkgCollector() *PkgCollector {
 	}
 }
 
+// Get takes the Go package name, collects information
+// and returns Package type populated with data.
 func (p *PkgCollector) Get(pkgName string) Package {
 	// Repository URL
 	var repo string
@@ -156,10 +166,18 @@ func sanitizeImports(imports string) string {
 	return strings.TrimSpace(chunks[1])
 }
 
+// Get takes a string representing Go pkg name
+// and returns the Package info.
+// It uses default collector configured to
+// interact with pkg.go.dev.
 func Get(name string) Package {
 	return NewPkgCollector().Get(name)
 }
 
+// GetJSON takes a name representing the Go package name
+// and returns JSON representation of the package info or an error.
+//
+// It uses default PkgCollector configured to interact with pkg.go.dev.
 func GetJSON(name string) (string, error) {
 	p := Get(name)
 	data, err := json.Marshal(p)
