@@ -134,6 +134,15 @@ response:
 github.com/open-telemetry/opentelemetry-go
 ```
 
+4. Send a query to `scorecard`
+
+```shell
+scorecard --repo github.com/open-telemetry/opentelemetry-go --format json | jq .score
+```
+```shell
+9.6
+```
+
 ---
 
 How to use `pkg` and `scorecard` together?
