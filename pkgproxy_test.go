@@ -35,11 +35,17 @@ func TestRetrievePackageRepositoryAddress(t *testing.T) {
 
 	got := pc.Get("gopkg.in/tomb.v1")
 	want := pkgproxy.Package{
-		Name:          "gopkg.in/tomb.v1",
-		Repository:    "github.com/go-tomb/tomb",
-		Version:       "v1.0.0",
-		PublishedDate: "Oct 24, 2014",
-		License:       "BSD-3-Clause",
+		Name:                   "gopkg.in/tomb.v1",
+		Repository:             "github.com/go-tomb/tomb",
+		Version:                "v1.0.0",
+		PublishedDate:          "Oct 24, 2014",
+		License:                "BSD-3-Clause",
+		Imports:                "3",
+		ImportedBy:             "685",
+		ValidGoMod:             "No",
+		RedistributableLicense: "Yes",
+		TaggedVersion:          "No",
+		StableVersion:          "No",
 	}
 
 	if !cmp.Equal(want, got) {

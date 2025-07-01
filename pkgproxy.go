@@ -1,6 +1,7 @@
 package pkgproxy
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/gocolly/colly"
@@ -63,15 +64,67 @@ func (p *PkgCollector) Get(pkgName string) Package {
 		license = strings.TrimSpace(e.ChildText("a"))
 	})
 
+	// Imports
+	var imports string
+	p.Collector.OnHTML(".go-Main-headerDetailItem[data-test-id='UnitHeader-imports']", func(e *colly.HTMLElement) {
+		imports = sanitizeImports(strings.TrimSpace(e.ChildText("a")))
+	})
+
+	// ImportedBy
+	var importedBy string
+	p.Collector.OnHTML(".go-Main-headerDetailItem[data-test-id='UnitHeader-importedby']", func(e *colly.HTMLElement) {
+		importedBy = sanitizeImports(strings.TrimSpace(e.ChildText("a")))
+	})
+
+	// Package details
+	var (
+		details            []string
+		validGoMod         string
+		redistributableLic string
+		taggedVersion      string
+		stableVersion      string
+	)
+
+	p.Collector.OnHTML(".UnitMeta-details", func(e *colly.HTMLElement) {
+		var v string
+		e.ForEach("li", func(i int, h *colly.HTMLElement) {
+			v = fmt.Sprintf("%s", h.ChildAttr("details>summary>img", "alt"))
+			details = append(details, strings.TrimSpace(v))
+		})
+		if len(details) < 4 {
+			return
+		}
+		validGoMod = sanitizeTrueFalse(details[0])
+		redistributableLic = sanitizeTrueFalse(details[1])
+		taggedVersion = sanitizeTrueFalse(details[2])
+		stableVersion = sanitizeTrueFalse(details[3])
+	})
+
 	p.Collector.Visit(p.BaseURL + "/" + pkgName)
 
 	return Package{
-		Name:          pkgName,
-		Repository:    repo,
-		Version:       version,
-		PublishedDate: published,
-		License:       license,
+		Name:                   pkgName,
+		Repository:             repo,
+		Version:                version,
+		PublishedDate:          published,
+		License:                license,
+		Imports:                imports,
+		ImportedBy:             importedBy,
+		ValidGoMod:             validGoMod,
+		RedistributableLicense: redistributableLic,
+		TaggedVersion:          taggedVersion,
+		StableVersion:          stableVersion,
 	}
+}
+
+func sanitizeTrueFalse(v string) string {
+	if v == "unchecked" {
+		return "No"
+	}
+	if v == "checked" {
+		return "Yes"
+	}
+	return "Undetected"
 }
 
 func sanitizeDate(date string) string {
@@ -88,6 +141,14 @@ func sanitizeVersion(version string) string {
 		return "Undetected"
 	}
 	chunks = strings.Split(chunks[0], ":")
+	if len(chunks) < 2 {
+		return "Undetected"
+	}
+	return strings.TrimSpace(chunks[1])
+}
+
+func sanitizeImports(imports string) string {
+	chunks := strings.Split(imports, ":")
 	if len(chunks) < 2 {
 		return "Undetected"
 	}
