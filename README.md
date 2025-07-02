@@ -6,6 +6,7 @@
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/qba73/pkgproxy)
 ![GitHub License](https://img.shields.io/github/license/qba73/pkgproxy)
 [![Scorecard](https://github.com/qba73/pkgproxy/actions/workflows/scorecard.yml/badge.svg)](https://github.com/qba73/pkgproxy/actions/workflows/scorecard.yml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10848/badge)](https://www.bestpractices.dev/projects/10848)
 
 
 
