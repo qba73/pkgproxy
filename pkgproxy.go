@@ -1,4 +1,3 @@
-// Package pkgproxy provides functions for getting Go package data from pkg.go.dev.
 package pkgproxy
 
 import (
@@ -41,6 +40,7 @@ func NewPkgCollector() *PkgCollector {
 		colly.CacheDir("./.pkg_cache"),
 		colly.UserAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"),
 	)
+
 	return &PkgCollector{
 		Collector: c,
 		BaseURL:   "https://pkg.go.dev",
