@@ -5,6 +5,7 @@
 [![CodeQL](https://github.com/qba73/pkgproxy/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/qba73/pkgproxy/actions/workflows/github-code-scanning/codeql)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/qba73/pkgproxy)
 ![GitHub License](https://img.shields.io/github/license/qba73/pkgproxy)
+[![Scorecard](https://github.com/qba73/pkgproxy/actions/workflows/scorecard.yml/badge.svg)](https://github.com/qba73/pkgproxy/actions/workflows/scorecard.yml)
 
 
 
