@@ -186,3 +186,16 @@ func GetJSON(name string) (string, error) {
 	}
 	return string(data), nil
 }
+
+// GetPrettyJSON takes a name representing the Go package name
+// and returns prettified JSON representation of the package info or an error.
+//
+// It uses default PkgCollector configured to interact with pkg.go.dev.
+func GetPrettyJSON(name string) (string, error) {
+	p := Get(name)
+	data, err := json.MarshalIndent(p, "", "  ")
+	if err != nil {
+		return "", fmt.Errorf("marshaling data: %w", err)
+	}
+	return string(data), nil
+}
